@@ -47,7 +47,8 @@ public class HeapSort {
 
     private int [] BuildMaxHeap(int [] A){
 
-        int x = ((HeapSize/2))-1;
+        //int x = ((HeapSize/2))-1;
+        int x = ((HeapSize/2));
         for(int i = x; i>=0; i--){
             MaxHeapify(A,i);
         }

@@ -31,7 +31,6 @@ public class MinHeap {
         HeapSize = Array.length;
         Pointer = Array.length;
         this.Dynamic = Dynamic;
-        //Heap = SlideArray(Array);
         Heap = this.BuildMinHeap(Array);
     }
 
@@ -39,7 +38,6 @@ public class MinHeap {
         HeapSize = Array.length;
         Pointer = Array.length;
         Dynamic = false;
-        //Heap = SlideArray(Array);
         Heap = this.BuildMinHeap(Array);
     }
 
@@ -138,7 +136,8 @@ public class MinHeap {
 
     private int [] BuildMinHeap(int [] A){
 
-        int x = (HeapSize/2)-1;
+        //int x = (HeapSize/2)-1;
+        int x = (HeapSize/2);
         for(int i = x; i>=0; i--){
             MinHeapify(A,i);
         }
