@@ -5,38 +5,36 @@ import Main.Heaps.MaxHeap;
 import Main.Heaps.MinHeap;
 import Main.PriorityQueues.HighPriorityQueue;
 import Main.PriorityQueues.LowPriorityQueue;
+import Main.PriorityQueues.PriorityQueue;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        PriorityQueue hp = new HighPriorityQueue();
 
-        MaxHeap a = new MaxHeap(10,true);
-        a.AddValue(3);
-        a.AddValue(4);
-        a.AddValue(7);
-        a.AddValue(24);
-        a.AddValue(9);
-        a.AddValue(45);
-        a.AddValue(78);
-        a.AddValue(33);
-        a.AddValue(12);
-        a.AddValue(27);
-        a.AddValue(9000);
-        a.PrintHeap();
+        hp.Initialize(10);
+        System.out.println(hp.isEmpty());
+        //hp.Peek();
+        hp.Insert(9,5);
+        System.out.println(hp.isEmpty());
+        System.out.println(hp.Peek());
+        hp.Insert(1,3);
+        hp.Insert(3,4);
+        hp.Insert(7,7);
+        hp.Insert(4,1);
+        hp.Insert(2,5);
+        System.out.println(hp.Peek());
+        hp.Extract();
+        System.out.println(hp.Peek());
+        System.out.println(hp.Extract());
+        System.out.println(hp.Peek());
 
-        a.RemoveValue(78);
-        a.RemoveValue(45);
-        a.RemoveValue(1);
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        a.PrintHeap();
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        a.AddValue(54);
-        a.AddValue(12);
-        a.AddValue(20);
-        a.AddValue(20);
-        a.PrintHeap();
+
+
+
+
+
 
 
 
