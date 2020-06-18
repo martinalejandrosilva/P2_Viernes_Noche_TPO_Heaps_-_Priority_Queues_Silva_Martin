@@ -10,19 +10,40 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int A [] = new int []{14,9,10,16,2,3,4,1,7,8};
 
-        HeapSort b = new HeapSort();
+        MaxHeap a = new MaxHeap(10,true);
+        a.AddValue(3);
+        a.AddValue(4);
+        a.AddValue(7);
+        a.AddValue(24);
+        a.AddValue(9);
+        a.AddValue(45);
+        a.AddValue(78);
+        a.AddValue(33);
+        a.AddValue(12);
+        a.AddValue(27);
+        a.AddValue(9000);
+        a.PrintHeap();
 
-        int [] c = b.Sort(A);
+        a.RemoveValue(78);
+        a.RemoveValue(45);
+        a.RemoveValue(1);
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        a.PrintHeap();
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        a.AddValue(54);
+        a.AddValue(12);
+        a.AddValue(20);
+        a.AddValue(20);
+        a.PrintHeap();
 
-        for(byte x = 0; x<c.length;x++){
-            System.out.println(c[x]);
-        }
 
 
 
 
-}
+
+
+    }
 }
 

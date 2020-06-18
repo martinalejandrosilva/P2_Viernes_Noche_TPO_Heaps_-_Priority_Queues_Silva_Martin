@@ -1,5 +1,7 @@
 package Main.Heaps;
 
+import javax.xml.stream.events.ProcessingInstruction;
+
 public class MinHeap {
 
     private int [] Heap;
@@ -7,11 +9,11 @@ public class MinHeap {
     private int HeapSize;
     private boolean Dynamic;
 
-    public MinHeap (){
-        Heap = new int[1];
+    public MinHeap(int Size, boolean Dynamic){
+        Heap = new int[Size];
         Pointer = 0;
-        HeapSize = 1;
-        Dynamic = false;
+        HeapSize = Size;
+        this.Dynamic = Dynamic;
     }
 
     public MinHeap (int Size){
@@ -56,8 +58,9 @@ public class MinHeap {
                 }
             }
             Heap[Pointer] = x;
-            Heap = this.BuildMinHeap(Heap);
             Pointer++;
+            Heap = this.BuildMinHeap(Heap);
+            //Pointer++;
         }catch (Exception ex){
             System.out.println("The Array is Full...");
         }
@@ -71,7 +74,7 @@ public class MinHeap {
             int Aux = Heap[Pointer-1];
             Heap[ElementIdx] = Aux;
             Pointer--;
-            HeapSize--;
+            //HeapSize--;
             Heap = this.BuildMinHeap(Heap);
         }
     }
@@ -88,7 +91,7 @@ public class MinHeap {
 
     public int Exist(int x){
         int ArrayPosition = -1;
-        for(byte i = 0; i < HeapSize; i++){
+        for(byte i = 0; i < Pointer; i++){
             if(Heap[i] == x){
                 ArrayPosition = i;
                 break;
@@ -117,12 +120,12 @@ public class MinHeap {
         int r = (2*i)+2;
         int lowerest;
 
-        if(l <= HeapSize-1 && A[i] > A[l]){
+        if(l <= Pointer-1 && A[i] > A[l]){
             lowerest = l;
         }else{
             lowerest = i;
         }
-        if (r <= HeapSize-1 && A[lowerest] > A[r]){
+        if (r <= Pointer-1 && A[lowerest] > A[r]){
             lowerest = r;
         }
         if(lowerest != i) {
@@ -137,7 +140,7 @@ public class MinHeap {
     private int [] BuildMinHeap(int [] A){
 
         //int x = (HeapSize/2)-1;
-        int x = (HeapSize/2);
+        int x = (Pointer/2);
         for(int i = x; i>=0; i--){
             MinHeapify(A,i);
         }

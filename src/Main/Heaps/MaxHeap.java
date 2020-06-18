@@ -5,13 +5,15 @@ public class MaxHeap {
     private int [] Heap;
     private int Pointer;
     private int HeapSize;
+
     private boolean Dynamic;
 
-    public MaxHeap (){
-        Heap = new int[1];
-        Pointer = 1;
-        HeapSize = 1;
-        Dynamic = false;
+
+    public MaxHeap(int Size, boolean Dynamic){
+        Heap = new int[Size];
+        Pointer = 0;
+        HeapSize = Size;
+        this.Dynamic = Dynamic;
     }
 
     public MaxHeap (int Size){
@@ -55,9 +57,12 @@ public class MaxHeap {
                     throw new Exception();
                 }
             }
+
+
             Heap[Pointer] = x;
-            Heap = this.BuildMaxHeap(Heap);
             Pointer++;
+            Heap = this.BuildMaxHeap(Heap);
+            //Pointer++;
         }catch (Exception ex){
             System.out.println("The Array is Full...");
         }
@@ -71,7 +76,7 @@ public class MaxHeap {
             int Aux = Heap[Pointer-1];
             Heap[ElementIdx] = Aux;
             Pointer--;
-            HeapSize--;
+            //HeapSize--;
             Heap = this.BuildMaxHeap(Heap);
         }
     }
@@ -81,14 +86,18 @@ public class MaxHeap {
     }
 
     public void PrintHeap(){
-        for(int i = 0; i<HeapSize; i++){
-            System.out.print(Heap[i] + ", ");
+        if (Pointer == 0){
+            System.out.println("The Array is Empty...");
+        }else {
+            for (int i = 0; i < Pointer; i++) {
+                System.out.print(Heap[i] + ", ");
+            }
         }
     }
 
     public int Exist(int x){
         int ArrayPosition = -1;
-        for(byte i = 0; i<HeapSize; i++){
+        for(byte i = 0; i<Pointer; i++){
             if(Heap[i] == x){
                 ArrayPosition = i;
                 break;
@@ -116,12 +125,12 @@ public class MaxHeap {
         int r = (2*i)+2;
         int largest;
 
-        if(l <= HeapSize-1 && A[l] > A[i]){
+        if(l <= Pointer-1 && A[l] > A[i]){
             largest = l;
         }else{
             largest = i;
         }
-        if (r <= HeapSize-1 && A[r] > A[largest]){
+        if (r <= Pointer-1 && A[r] > A[largest]){
             largest = r;
         }
         if(largest != i) {
@@ -136,7 +145,7 @@ public class MaxHeap {
     private int [] BuildMaxHeap(int [] A){
 
         //int x = ((HeapSize/2))-1;
-        int x = ((HeapSize/2));
+        int x = ((Pointer/2));
         for(int i = x; i>=0; i--){
             MaxHeapify(A,i);
         }
