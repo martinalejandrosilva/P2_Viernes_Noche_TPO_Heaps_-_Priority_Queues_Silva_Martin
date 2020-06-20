@@ -118,21 +118,21 @@ public class MinHeap {
 
         int l = (2*i)+1;
         int r = (2*i)+2;
-        int lowerest;
+        int lowest;
 
         if(l <= Pointer-1 && A[i] > A[l]){
-            lowerest = l;
+            lowest = l;
         }else{
-            lowerest = i;
+            lowest = i;
         }
-        if (r <= Pointer-1 && A[lowerest] > A[r]){
-            lowerest = r;
+        if (r <= Pointer-1 && A[lowest] > A[r]){
+            lowest = r;
         }
-        if(lowerest != i) {
+        if(lowest != i) {
             int aux = A[i];
-            A[i] = A[lowerest];
-            A[lowerest] = aux;
-            MinHeapify(A,lowerest);
+            A[i] = A[lowest];
+            A[lowest] = aux;
+            MinHeapify(A,lowest);
         }
         return A;
     }

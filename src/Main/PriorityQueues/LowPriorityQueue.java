@@ -69,21 +69,21 @@ public class LowPriorityQueue implements PriorityQueue {
     private Node[] MinHeapify(Node[] A, int i){
         int l = (2*i)+1;
         int r = (2*i)+2;
-        int lowerest;
+        int lowest;
 
         if(l <= Pointer && A[i].Priority > A[l].Priority){
-            lowerest = l;
+            lowest = l;
         }else{
-            lowerest = i;
+            lowest = i;
         }
-        if (r <= Pointer && A[lowerest].Priority > A[r].Priority){
-            lowerest = r;
+        if (r <= Pointer && A[lowest].Priority > A[r].Priority){
+            lowest = r;
         }
-        if(lowerest != i) {
+        if(lowest != i) {
             Node aux = A[i];
-            A[i] = A[lowerest];
-            A[lowerest] = aux;
-            MinHeapify(A,lowerest);
+            A[i] = A[lowest];
+            A[lowest] = aux;
+            MinHeapify(A,lowest);
         }
         return A;
     }
